@@ -1,0 +1,112 @@
+ .topbar {
+      height: 72px;
+      background: var(--bg-primary);
+      border-bottom: 1px solid var(--border-color);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .search-container {
+      flex: 1;
+      max-width: 500px;
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .search-container svg {
+      position: absolute;
+      left: 1rem;
+      color: var(--text-tertiary);
+    }
+
+    .search-container input {
+      width: 100%;
+      padding: 0.75rem 1rem 0.75rem 3rem;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      font-size: 0.875rem;
+      background: var(--bg-secondary);
+    }
+
+    .topbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .icon-btn {
+      position: relative;
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      border: none;
+      background: transparent;
+      color: var(--text-secondary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+
+    .icon-btn:hover {
+      background: var(--gray-100);
+      color: var(--primary-600);
+    }
+
+    .notification-badge {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 8px;
+      height: 8px;
+      background: var(--error-500);
+      border-radius: 50%;
+      border: 2px solid var(--bg-primary);
+    }
+
+    .user-menu {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .user-menu:hover {
+      background: var(--gray-100);
+    }
+
+    .avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary-600), var(--secondary-600));
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+
+    .user-name {
+      font-weight: 500;
+      font-size: 0.875rem;
+      color: var(--text-primary);
+    }
+
+    @media (max-width: 768px) {
+      .user-name {
+        display: none;
+      }
+    }

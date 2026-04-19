@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: logivision_db
+    environment:
+      POSTGRES_DB: logivision
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin123
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+    networks:
+      - logivision_network
+
+  backend:
+    build: ./backend
+    container_name: logivision_backend
+    environment:
+      POSTGRES_DSN: postgresql://admin:admin123@postgres:5432/logivision
+      S3_BUCKET_NAME: ${S3_BUCKET_NAME:-damage-detection-images-s3}
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+      AWS_REGION: ${AWS_REGION:-eu-north-1}
+      SECRET_KEY: ${SECRET_KEY:-your-super-secret-jwt-key-change-in-production}
+      ALGORITHM: HS256
+      ACCESS_TOKEN_EXPIRE_MINUTES: 30
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+    networks:
+      - logivision_network
+    volumes:
+      - ./backend/models:/app/models
+
+  frontend:
+    build: ./frontend/angular-app
+    container_name: logivision_frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - logivision_network
+
+volumes:
+  postgres_data:
+
+networks:
+  logivision_network:
+    driver: bridge

@@ -1,0 +1,12 @@
+# Virtual Environment
+venv/
+env/
+*.pyc
+__pycache__/
+node_modules/
+.angular/
+*.pt
+*.pth
+.env
+.DS_Store
+dist/

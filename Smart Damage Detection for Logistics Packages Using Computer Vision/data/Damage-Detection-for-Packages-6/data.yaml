@@ -1,0 +1,16 @@
+names:
+- crushed
+- dented
+- torn
+- undamaged
+- wet
+nc: 5
+roboflow:
+  license: Public Domain
+  project: damage-detection-for-packages-dspra
+  url: https://universe.roboflow.com/smart-damage-detection-for-logistics-packages-using-computer-vision/damage-detection-for-packages-dspra/dataset/6
+  version: 6
+  workspace: smart-damage-detection-for-logistics-packages-using-computer-vision
+test: ../test/images
+train: ../train/images
+val: ../valid/images

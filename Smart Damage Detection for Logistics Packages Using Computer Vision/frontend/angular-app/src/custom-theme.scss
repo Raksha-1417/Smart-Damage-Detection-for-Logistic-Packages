@@ -1,0 +1,31 @@
+@use '@angular/material' as mat;
+
+// 1) Choose palettes
+$primary-palette: mat.define-palette(mat.$indigo-palette, 600, 400, 800);
+$accent-palette:  mat.define-palette(mat.$teal-palette, 500, 300, 700);
+$warn-palette:    mat.define-palette(mat.$red-palette);
+
+// 2) Create theme
+$theme: mat.define-light-theme((
+  color: (
+    primary: $primary-palette,
+    accent:  $accent-palette,
+    warn:    $warn-palette
+  ),
+  typography: mat.define-typography-config((
+    headline-1: mat.define-typography-level(48px, 56px, 600),
+    headline-2: mat.define-typography-level(32px, 40px, 600),
+    body-1: mat.define-typography-level(14px, 20px, 400)
+  ))
+));
+
+// 3) Include core and theme styles
+@include mat.core();
+@include mat.all-component-themes($theme);
+
+// Optional: expose CSS variables for ease of use in components
+:root {
+  --mat-primary: #{mat.get-color-from-palette($primary-palette, 500)};
+  --mat-accent: #{mat.get-color-from-palette($accent-palette, 500)};
+  --mat-warn: #{mat.get-color-from-palette($warn-palette, 500)};
+}

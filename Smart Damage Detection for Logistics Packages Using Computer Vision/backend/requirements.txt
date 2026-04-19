@@ -1,0 +1,69 @@
+# ============================================================================
+# LogiVision - Production Requirements
+# ============================================================================
+
+# Core framework
+fastapi==0.109.0
+uvicorn[standard]==0.27.0
+python-multipart==0.0.6
+starlette==0.35.1
+
+# Database
+asyncpg==0.29.0
+psycopg2-binary==2.9.9
+
+# Authentication & security
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+bcrypt==4.0.1
+PyJWT==2.8.0
+cryptography==42.0.2
+
+# Image processing — headless variants work in containers (no GUI deps)
+pillow==10.2.0
+opencv-python-headless==4.9.0.80
+numpy==1.26.3
+scikit-image==0.22.0
+
+# Deep learning & YOLO
+# CPU-only torch keeps the image/build small; remove +cpu suffix if GPU is available
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.2.0+cpu
+torchvision==0.17.0+cpu
+ultralytics==8.1.0
+
+# Explainability AI
+shap==0.44.1
+matplotlib==3.8.2
+seaborn==0.13.1
+scipy==1.12.0
+
+# AWS S3 storage
+boto3==1.34.34
+botocore==1.34.34
+s3transfer==0.10.0
+
+# Environment & configuration
+python-dotenv==1.0.1
+pydantic==2.5.3
+pydantic-settings==2.1.0
+
+# HTTP
+httpx==0.26.0
+requests==2.31.0
+aiohttp==3.9.3
+
+# Utilities
+python-dateutil==2.8.2
+pytz==2024.1
+typing-extensions==4.9.0
+
+# Logging
+loguru==0.7.2
+
+# Data validation
+email-validator==2.1.0.post1
+
+# Additional utilities
+tqdm==4.66.1
+pandas==2.2.0

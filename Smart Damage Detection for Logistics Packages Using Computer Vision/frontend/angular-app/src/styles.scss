@@ -1,0 +1,109 @@
+@use 'src/custom-theme' as *;    // <- MUST be first in the chain
+
+// Google fonts (CSS @import is allowed after @use)
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+// Minimal reset
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1e40af;
+  --secondary: #3b82f6;
+  --tertiary: #06b6d4;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+  --white: #ffffff;
+  --border-radius: 12px;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--gray-50);
+  color: var(--gray-900);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+}
+
+/* Layout helpers */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Card, buttons, badges */
+.card {
+  background: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  padding: 1.5rem;
+  transition: all 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+}
+
+.btn {
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: 'Inter', sans-serif;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: #fff;
+}
+
+.btn-primary:hover {
+  filter: brightness(0.95);
+}
+
+/* Badges */
+.badge {
+  padding: 0.25rem 0.6rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* Forms */
+input, select, textarea {
+  width: 100%;
+  padding: 0.7rem;
+  border: 1px solid #e6e6e6;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+/* Utility */
+.gradient-bg {
+  background: linear-gradient(135deg, #1e88e5, #06b6d4);
+}
