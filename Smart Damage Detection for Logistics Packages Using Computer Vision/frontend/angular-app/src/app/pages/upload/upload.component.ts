@@ -4,6 +4,7 @@ import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http'
 import { firstValueFrom } from 'rxjs';
 import { Dashboard3DBackgroundComponent } from '../dashboard/dashboard-3d-background.component';
 import { AuthService } from '../../services/auth.service';
+import { environment } from '../../../environments/environment';
 
 interface DetectedDamage {
   id: number;
@@ -2453,7 +2454,7 @@ interface DetectionResponse {
 export class UploadComponent {
   @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
   
-  private apiUrl = 'http://localhost:8000/api';
+  private apiUrl = environment.apiUrl;
   private isBrowser: boolean;
 primaryDamage: DetectedDamage | null = null;
 primaryExplanation: { what: string; why: string; cause: string; recommendation: string } | null = null;

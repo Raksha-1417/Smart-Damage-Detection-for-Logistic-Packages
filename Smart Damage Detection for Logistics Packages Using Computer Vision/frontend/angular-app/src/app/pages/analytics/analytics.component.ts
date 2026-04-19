@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { AuthService } from '../../services/auth.service';
+import { environment } from '../../../environments/environment';
 import { forkJoin } from 'rxjs';
 
 @Component({
@@ -530,7 +531,7 @@ import { forkJoin } from 'rxjs';
   `]
 })
 export class AnalyticsComponent implements OnInit, OnDestroy {
-  private apiUrl = 'http://localhost:8000/api';
+  private apiUrl = environment.apiUrl;
   private refreshInterval: any;
   stats: any = null;
   analytics: any = null;

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { AuthService } from '../../services/auth.service';
+import { environment } from '../../../environments/environment';
 import { Dashboard3DBackgroundComponent } from '../dashboard/dashboard-3d-background.component';
 
 interface Package {
@@ -1191,7 +1192,7 @@ interface Package {
   `]
 })
 export class InspectionQueueComponent implements OnInit, OnDestroy {
-  private apiUrl = 'http://localhost:8000/api';
+  private apiUrl = environment.apiUrl;
   private refreshInterval: any;
   
   searchQuery = '';
