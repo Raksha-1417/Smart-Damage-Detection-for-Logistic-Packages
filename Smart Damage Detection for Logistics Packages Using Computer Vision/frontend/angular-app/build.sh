@@ -17,4 +17,13 @@ npm install
 echo "🏗️  Building Angular app..."
 npm run build
 
+# RenderMode.Client outputs index.csr.html; rename to index.html so Render's
+# SPA rewrite (/* → /index.html) serves the Angular shell correctly.
+CSR="dist/damage-detection-frontend/browser/index.csr.html"
+IDX="dist/damage-detection-frontend/browser/index.html"
+if [ -f "$CSR" ] && [ ! -f "$IDX" ]; then
+  mv "$CSR" "$IDX"
+  echo "✅ Renamed index.csr.html → index.html"
+fi
+
 echo "✅ Build complete"
