@@ -152,6 +152,27 @@ app = FastAPI(
     lifespan=lifespan
 )
 
+# ============================================================================
+# ROOT ROUTES
+# ============================================================================
+
+@app.get("/")
+async def root():
+    return {
+        "status": "online",
+        "message": "LogiVision AI Backend is running",
+        "docs": "/docs",
+        "author": "RakshaRajkumar14"
+    }
+
+@app.get("/api")
+async def api_root():
+    return {
+        "status": "online",
+        "message": "API endpoints are available",
+        "version": "2.0.0"
+    }
+
 # CORS middleware
 app.add_middleware(
     CORSMiddleware,
