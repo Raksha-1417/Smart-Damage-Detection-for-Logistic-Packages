@@ -24,6 +24,10 @@ export class AuthService {
   private apiUrl = environment.apiUrl;
    private isBrowser: boolean;
   
+  getApiUrl(): string {
+    return this.apiUrl;
+  }
+  
   private currentUserSubject = new BehaviorSubject<any>(null);
   public currentUser$ = this.currentUserSubject.asObservable();
 

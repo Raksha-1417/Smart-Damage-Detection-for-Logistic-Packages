@@ -860,14 +860,14 @@ export class LoginComponent implements OnDestroy {
   this.loadingText = 'Authenticating...';
 
   console.log('🔐 Starting login process...');
-  console.log('🌐 Backend URL: http://localhost:8000/api/auth/login');
+  console.log('🌐 Backend URL:', `${this.authService.getApiUrl()}/auth/login`);
 
   // Create a timeout to prevent infinite loading
   const timeoutId = setTimeout(() => {
     if (this.isLoading) {
       console.error('⏱️ Login timeout - taking too long');
       this.isLoading = false;
-      this.errorMessage = '⏱️ Request timeout. Check if backend is running on port 8000';
+      this.errorMessage = `⏱️ Request timeout. Check if backend is running at ${this.authService.getApiUrl()}`;
     }
   }, 15000); // 15 second timeout
 
@@ -911,7 +911,7 @@ export class LoginComponent implements OnDestroy {
         if (error.status === 0) {
           this.errorMessage = '🔌 Cannot connect to backend';
           this.backendOnline = false;
-          console.error('💡 Solution: Start backend with: cd backend && python -m uvicorn app.app:app --reload --port 8000');
+          console.error(`💡 Solution: Backend should be reachable at ${this.authService.getApiUrl()}`);
         } else if (error.status === 401) {
           this.errorMessage = '🔒 Invalid username or password';
         } else if (error.status === 404) {
